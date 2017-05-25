@@ -2,6 +2,8 @@ package com.example.pun.whatdoido;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.support.annotation.BoolRes;
 import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,18 +27,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton addTaskButton = (ImageButton) findViewById(R.id.b_add);
-        ImageButton markTaskButton = (ImageButton) findViewById(R.id.b_done);
-        ImageButton delTaskButton = (ImageButton) findViewById(R.id.b_del);
+        final ImageButton addTaskButton = (ImageButton) findViewById(R.id.b_add);
+        final ImageButton markTaskButton = (ImageButton) findViewById(R.id.b_done);
+        final ImageButton delTaskButton = (ImageButton) findViewById(R.id.b_del);
         final EditText enterTaskHead = (EditText) findViewById(R.id.et_enter_head);
         final EditText enterTaskBody = (EditText) findViewById(R.id.et_enter_body);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
 
+        Typeface tf= Typeface.createFromAsset(getAssets(),"fonts/Cavorting.otf");
 
-
-        final TaskAdapter adapter = new TaskAdapter(tasks);
+        final TaskAdapter adapter = new TaskAdapter(tasks,tf);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -67,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 enterTaskHead.setVisibility(View.VISIBLE);
                 enterTaskBody.setVisibility(View.VISIBLE);
+                markTaskButton.setVisibility(View.VISIBLE);
+                addTaskButton.setVisibility(View.GONE);
+                delTaskButton.setVisibility(View.GONE);
 
             }
         });
@@ -75,20 +80,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String h = enterTaskHead.getText().toString();
                 String b = enterTaskBody.getText().toString();
-                if (enterTaskBody.getVisibility()!=View.GONE) {
+
+                if(h.equals("")==false) {
                     Task newTask = new Task(h, b);
                     tasks.add(newTask);
                     adapter.notifyDataSetChanged();
                     enterTaskBody.setText("");
                     enterTaskHead.setText("");
-                    enterTaskHead.setVisibility(View.GONE);
-                    enterTaskBody.setVisibility(View.GONE);
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    Toast.makeText(getApplicationContext(),"Added new TODO!",Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    Toast.makeText(getApplicationContext(),Integer.toString(adapter.getItemCount()),Toast.LENGTH_LONG).show();
-                }
+                else
+                    Toast.makeText(getApplicationContext(),"YOU can't do NOTHING!",Toast.LENGTH_SHORT).show();
+                enterTaskHead.setVisibility(View.GONE);
+                enterTaskBody.setVisibility(View.GONE);
+                markTaskButton.setVisibility(View.GONE);
+                addTaskButton.setVisibility(View.VISIBLE);
+                delTaskButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -96,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                if(adapter.getLongPressStatus()==true){
+                    adapter.setLongPressStatus(false);
+                }
 
                 ArrayList<Integer> selectedItemsID = new ArrayList<Integer>(adapter.getSelectedItemsID());
                 int s_size = selectedItemsID.size();

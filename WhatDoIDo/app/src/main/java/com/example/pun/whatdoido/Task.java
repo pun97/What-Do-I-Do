@@ -12,19 +12,25 @@ public class Task {
     private String body;
     private boolean isCompleted;
     private boolean isSelected;
+
+    public boolean isOnFocus() {
+        return onFocus;
+    }
+
+    public void setOnFocus(boolean onFocus) {
+        this.onFocus = onFocus;
+    }
+
+    private boolean onFocus=false;
     private int ID;
     static int COUNT=0;
 
-    public Task(String header, String body, boolean isCompleted){
-        this.header = header;
-        this.body = body;
-        this.isCompleted = isCompleted;
-        this.isSelected = false;
-        this.ID = COUNT;
-        COUNT++;
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
     }
 
-    public Task(String header,String body){
+    public Task(String header, String body){
         this.header = header;
         this.body = body;
         this.isCompleted = false;
