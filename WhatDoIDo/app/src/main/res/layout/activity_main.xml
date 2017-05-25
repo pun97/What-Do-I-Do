@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.pun.whatdoido.MainActivity"
+    android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/frame"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="55dp"
+            android:padding="15dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/add"
+            android:scaleType="fitCenter"
+            android:id="@+id/b_add"/>
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="55dp"
+            android:padding="15dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/tick"
+            android:scaleType="fitCenter"
+            android:id="@+id/b_done"/>
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="55dp"
+            android:padding="15dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/bin"
+            android:scaleType="fitCenter"
+            android:id="@+id/b_del"/>
+
+    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_enter_head"
+        android:layout_below="@id/frame"
+        android:visibility="gone"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        android:hint="Enter head"
+        android:textColorHint="#888888"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_enter_body"
+        android:layout_below="@id/et_enter_head"
+        android:visibility="gone"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        android:hint="Enter body"
+        android:textColorHint="#888888"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/et_enter_body"
+        android:id="@+id/recycler_view"
+        android:padding="20dp">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>
