@@ -12,6 +12,7 @@ public class Task {
     private String body;
     private boolean isCompleted;
     private boolean isSelected;
+    private int ID;
 
     public boolean isOnFocus() {
         return onFocus;
@@ -22,7 +23,7 @@ public class Task {
     }
 
     private boolean onFocus=false;
-    private int ID;
+
     static int COUNT=0;
 
 
@@ -38,6 +39,15 @@ public class Task {
         this.ID = COUNT;
         COUNT++;
     }
+    public Task(String header, String body, boolean b){
+        this.header = header;
+        this.body = body;
+        this.isCompleted = b;
+        this.isSelected = false;
+        this.ID = COUNT;
+        COUNT++;
+    }
+
 
     @Override
     protected void finalize() throws Throwable {
