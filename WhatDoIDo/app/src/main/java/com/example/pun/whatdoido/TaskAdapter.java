@@ -30,6 +30,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
     private boolean isLongPressed=false;
     Typeface tf;
 
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

@@ -30,6 +30,7 @@ public class TaskHolder extends RecyclerView.ViewHolder {
         wrapper = (LinearLayout) itemView.findViewById(R.id.wrapper);
         status = (ImageButton) itemView.findViewById(R.id.status);
         body.setTypeface(tf);
+
     }
 
     public void bindTask(Task mTask) {
@@ -80,8 +81,6 @@ public class TaskHolder extends RecyclerView.ViewHolder {
             status.setImageResource(R.drawable.selected);
         } else {
             body.setVisibility(View.GONE);
-            //wrapper.setBackgroundResource(R.color.unSelected);
-            //body.setVisibility(View.GONE);
             selector.setVisibility(View.INVISIBLE);
         }
     }

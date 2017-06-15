@@ -13,9 +13,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+                <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".createTask" />
+        <activity android:name=".CreateTask"></activity>
     </application>
 
 </manifest>
