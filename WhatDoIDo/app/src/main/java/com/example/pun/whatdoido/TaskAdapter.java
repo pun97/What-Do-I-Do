@@ -58,13 +58,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
             if(isLongPressed==false) {
 
                 if (current.isOnFocus()==false) {
-                    /*
-                    for(int j=0;j<mTaskList.size();j++){
-                        if(mTaskList.get(j)!=current&&mTaskList.get(j).isOnFocus()) {
-                            mTaskList.get(j).setOnFocus(false);
-                            notifyItemChanged(j);
-                        }
-                    }*/
                     current.setOnFocus(true);
                     notifyItemChanged(i);
                 } else {
@@ -124,7 +117,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
         @Override
         public void onClick(View view) {
             if (isLongPressed == false) {
-                View Pview = (View) view.getParent();
+                View Pview = (View) view.getParent().getParent();
+
                 TextView id = (TextView) Pview.findViewById(R.id.ID);
 
                 int currID = Integer.parseInt(id.getText().toString());

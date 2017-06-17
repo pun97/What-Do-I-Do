@@ -65,17 +65,25 @@
                 android:paddingBottom="10dp"
                 android:paddingRight="10dp"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 tools:text="This is the description of the huge document man, it totally rocks. I just love the way it looks. Hopefully people will like what I'm creating. This is what i wish." />
         </LinearLayout>
-        <ImageButton
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            tools:src="@drawable/complete"
-            android:scaleType="fitCenter"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/status"
-            android:background="@android:color/transparent"
-            android:layout_weight="3"/>
+            android:id="@+id/imgholder"
+            android:layout_weight="3">
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                tools:src="@drawable/complete"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/status"
+                android:padding="5dp"
+                android:background="@android:color/transparent"
+                android:layout_weight="3"/>
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

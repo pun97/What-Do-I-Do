@@ -20,6 +20,7 @@ public class TaskHolder extends RecyclerView.ViewHolder {
     private LinearLayout selector;
     private LinearLayout wrapper;
     private ImageButton status;
+    private LinearLayout imgholder;
 
     public TaskHolder(View itemView, Typeface tf) {
         super(itemView);
@@ -29,6 +30,7 @@ public class TaskHolder extends RecyclerView.ViewHolder {
         selector = (LinearLayout) itemView.findViewById(R.id.selector);
         wrapper = (LinearLayout) itemView.findViewById(R.id.wrapper);
         status = (ImageButton) itemView.findViewById(R.id.status);
+        imgholder = (LinearLayout) itemView.findViewById(R.id.imgholder);
         body.setTypeface(tf);
 
     }
@@ -38,6 +40,7 @@ public class TaskHolder extends RecyclerView.ViewHolder {
         header.setText(mTask.getHeader());
         ID.setText(Integer.toString(mTask.getID()));
         status.setVisibility(View.VISIBLE);
+        imgholder.setVisibility(View.VISIBLE);
         if (mTask.getIsCompleted() == false && mTask.getIsSelected() == false && mTask.isOnFocus() == false) {
             status.setImageResource(R.drawable.complete);
             header.setBackgroundResource(R.color.incomplete);
@@ -55,6 +58,7 @@ public class TaskHolder extends RecyclerView.ViewHolder {
         if (mTask.isOnFocus() == true) {
             header.setPaintFlags(1281);
             status.setVisibility(View.GONE);
+            imgholder.setVisibility(View.GONE);
             body.setVisibility(View.VISIBLE);
             body.setText(mTask.getBody());
             selector.setVisibility(View.INVISIBLE);

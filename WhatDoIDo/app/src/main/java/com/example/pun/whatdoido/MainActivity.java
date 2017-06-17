@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("PUNEET","EXCEPTION JSON LIST2");
         }
         Log.d("PUNEET",tasks.size()+" SIZE onCreate");
-       
+
         Typeface tf= Typeface.createFromAsset(getAssets(),"fonts/montserrat_light.ttf");
 
         ParcelableTask ptask = getIntent().getParcelableExtra("task");
@@ -207,12 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this,CreateTask.class);
                 startActivity(intent);
-                /*enterTaskHead.setVisibility(View.VISIBLE);
-                enterTaskBody.setVisibility(View.VISIBLE);
-                markTaskButton.setVisibility(View.VISIBLE);
-                addTaskButton.setVisibility(View.GONE);
-                delTaskButton.setVisibility(View.GONE);
-                */
+
             }
         });
 
